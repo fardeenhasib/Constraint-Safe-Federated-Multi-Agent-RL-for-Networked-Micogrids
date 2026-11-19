@@ -1,30 +1,4 @@
-"""
-Toy prototype: constraint-safe federated multi-agent RL for networked microgrids
-under communication dropouts.  NumPy only (manual backprop), CPU-fast.
 
-THIS IS A TOY SIMULATION for pipeline checking -- not a validated power-system
-model.  Do not report its numbers as research results.
-
-Setup
------
-* N microgrids, each with load, PV, and a battery.  Each agent sees only LOCAL
-  observations (partial observability) and picks a battery charge/discharge power.
-* Coupling: all microgrids share one feeder with an aggregate import limit L.
-  A time-of-use price makes every agent want to charge at the same cheap hours,
-  which overloads the feeder unless they coordinate implicitly through the
-  Lagrangian-penalised shared violation signal.
-* Training: per-agent Gaussian policy, REINFORCE with time-dependent baseline,
-  Lagrangian constraint handling (per-agent dual variable).
-* Federation: every round each agent trains locally, then a server aggregates
-  policy parameters.  Uploads and downloads are dropped independently with prob p.
-
-Methods
--------
-independent : no communication (lower bound for coordination, upper bound for privacy)
-fedavg      : average whatever arrives this round, broadcast to whoever is reachable
-csw         : cache + staleness-weighted aggregation, also averages dual variables
-              (candidate dropout-robust aggregation rule for the real study)
-"""
 import numpy as np
 
 D_OBS, H = 5, 16
