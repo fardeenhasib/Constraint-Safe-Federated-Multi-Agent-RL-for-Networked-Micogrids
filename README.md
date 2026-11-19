@@ -1,4 +1,4 @@
-# Toy prototype results — federated safe MARL, microgrids with dropouts
+# Federated safe MARL, microgrids with dropouts
 
 IMPORTANT: this is a NumPy toy simulation (synthetic load/PV/price, shared feeder limit), built to check the pipeline and shape the real experiment. These numbers are NOT research results and must not appear on the CV. Re-run the study in PowerGridworld/pandapower before reporting anything.
 
